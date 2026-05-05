@@ -1,0 +1,176 @@
+[
+  {
+    "id": "0345fe90-598a-4738-bf2a-6cb03729ba10",
+    "content": "You are an AI model embedded in a custom harness. You are running on the users machine.\n\nYou will encounter system, model and author prompts. System prompts result from tool callings or general context,\nmodel prompts are from you, and user prompts are directly from the user.\n\nTool calls are possible. To know which tools are available, use the \"list-tools\" tool. Any tool you want to invoke\nmust be specified by the \"list-tools\" tool, otherwise it is not present. To invoke a tool, write use json syntax\nof the form {\"tool\":<tool-id>,\"args\":<args>} where <args> is a string of a specific syntax specified by the tool.\nThe object should be as trimmed as possible, no unnecessary whitespaces. Every tool call from you must be wrapped within\na leading and following new line, aka \n<tool-call>\n.\n",
+    "author": "system",
+    "timestamp": 1777938158949
+  },
+  {
+    "id": "d4bbd499-aaf8-4a2d-bc98-49b63c83b4bd",
+    "content": "tell me a joke\n",
+    "author": "user",
+    "timestamp": 1777938169712
+  },
+  {
+    "id": "7f93e885-bb3e-4210-b6b0-4be3761c128e",
+    "content": "Why did the scarecrow win an award? \n\nBecause he was outstanding in his field!",
+    "author": "model",
+    "timestamp": 1777938175398
+  },
+  {
+    "id": "8d456a29-dce1-47c0-833a-7249eb2e3385",
+    "content": "list all files in the src folder and create a summary of each file\n",
+    "author": "user",
+    "timestamp": 1777938271500
+  },
+  {
+    "id": "95d0b58c-cab7-4b9a-9a75-d9155bcf5e14",
+    "content": "\n{\"tool\":\"list-tools\",\"args\":\"\"}\n",
+    "author": "model",
+    "timestamp": 1777938277332
+  },
+  {
+    "id": "a8bc9c55-f871-4f1d-94fe-86d62a27ba6f",
+    "content": "Tool list-tools -- 1/4\n  The \"list-tools\" tool can be used to list all tools available. It returns the description\nof all tools, explaining what they are used for, and what there syntax is.\n\nTo invoke, respond in the form of {tool:\"list-tools\",args:\"\"}. No arguments other then \"\" are possible.\nTool read-file -- 2/4\n  The \"read-file\" tool can be used to read the contents of any file provided its path.\nBulk operations are possible, one can supply multiple file paths to get the contents at once.\n\nTo invoke, respond in the form of {tool:\"read-file\",args:string[]} where the string array are\nthe paths to requested files. Absolute as well as relative file paths are possible.\nTool list-dir -- 3/4\n  The \"list-dir\" tool can be used to list the contents of a directory provided its path.\nBulk operations are possible, one can supply multiple directory paths to get the contents at once.\n\nTo invoke, respond in the form of {\"tool\":\"list-dir\",\"args\":string[]} where the string array are\nthe paths to requested directories. Absolute as well as relative directory paths are possible.\nTool write-file -- 4/4\n  The \"write-file\" tool can be used to create new files or overwrite existing files with provided content.\nIt acts on one file at a time.\n\nTo invoke, respond in the form of {\"tool\":\"write-file\",\"args\":{\"path\":\"string\",\"content\":\"string\"}} where path is the target file path and content is the string content to write. Absolute as well as relative file paths are possible.",
+    "author": "system",
+    "timestamp": 1777938277333
+  },
+  {
+    "id": "c7f5a321-6d90-46d3-9b62-9c562b4fb6dc",
+    "content": "\n{\"tool\":\"list-dir\",\"args\":[\"src\"]}\n",
+    "author": "model",
+    "timestamp": 1777938280474
+  },
+  {
+    "id": "73ba91bf-5cc9-4f49-9aef-957cf2271b82",
+    "content": "Contents of src:\ncoder/\nconstants.ts\nharness/\nindex.ts",
+    "author": "system",
+    "timestamp": 1777938280475
+  },
+  {
+    "id": "4cfac2f1-33d7-43b6-9558-22b31c029ec6",
+    "content": "\n{\"tool\":\"list-dir\",\"args\":[\"src/coder\",\"src/harness\"]}\n",
+    "author": "model",
+    "timestamp": 1777938288623
+  },
+  {
+    "id": "a2c4777c-bb57-49be-b02e-cbea3405bb06",
+    "content": "Contents of src/coder:\nconversations.ts\nlogger.ts\ntools.ts",
+    "author": "system",
+    "timestamp": 1777938288625
+  },
+  {
+    "id": "c92f0c8c-2556-42f1-bd39-a5751870a004",
+    "content": "Contents of src/harness:\nfeed.ts\nmodels.ts\nsession.ts\ntools/",
+    "author": "system",
+    "timestamp": 1777938288625
+  },
+  {
+    "id": "864e1d9c-d52b-4685-83d5-d4c8ba4e0b87",
+    "content": "\n{\"tool\":\"list-dir\",\"args\":[\"src/harness/tools\"]}\n",
+    "author": "model",
+    "timestamp": 1777938296099
+  },
+  {
+    "id": "c9e3afa4-fe1a-488c-9302-c07e60b2063e",
+    "content": "Contents of src/harness/tools:\nall-tools.ts\nlist-dir.ts\nlist-tools.ts\nread-file.ts\ntool.ts\nwrite-file.ts",
+    "author": "system",
+    "timestamp": 1777938296100
+  },
+  {
+    "id": "377d5923-cca6-4751-b565-ea5525b44844",
+    "content": "\n{\"tool\":\"read-file\",\"args\":[\"src/constants.ts\",\"src/index.ts\",\"src/coder/conversations.ts\",\"src/coder/logger.ts\",\"src/coder/tools.ts\",\"src/harness/feed.ts\",\"src/harness/models.ts\",\"src/harness/session.ts\",\"src/harness/tools/all-tools.ts\",\"src/harness/tools/list-dir.ts\",\"src/harness/tools/list-tools.ts\",\"src/harness/tools/read-file.ts\",\"src/harness/tools/tool.ts\",\"src/harness/tools/write-file.ts\"]}\n",
+    "author": "model",
+    "timestamp": 1777938301628
+  },
+  {
+    "id": "847f219d-6c7a-4a21-8dac-bf80d09eb46a",
+    "content": "import { convertToStructuredMessage } from \"./coder/conversations.ts\";\n\nexport type Author = \"user\" | \"model\" | \"system\";\n\nexport type Message = {\n  id: string;\n  content: string;\n  timestamp: number;\n  author: Author;\n};\n\nexport const DATE_TIME_FORMAT = new Intl.DateTimeFormat(\"en-UK\", {\n  day: \"numeric\",\n  month: \"numeric\",\n  year: \"numeric\",\n  hour: \"numeric\",\n  minute: \"numeric\",\n});\n\nexport const SYSTEM_PROMPT = convertToStructuredMessage(\n  \"system\",\n  `You are an AI model embedded in a custom harness. You are running on the users machine.\n\nYou will encounter system, model and author prompts. System prompts result from tool callings or general context,\nmodel prompts are from you, and user prompts are directly from the user.\n\nTool calls are possible. To know which tools are available, use the \"list-tools\" tool. Any tool you want to invoke\nmust be specified by the \"list-tools\" tool, otherwise it is not present. To invoke a tool, write use json syntax\nof the form {\"tool\":<tool-id>,\"args\":<args>} where <args> is a string of a specific syntax specified by the tool.\nThe object should be as trimmed as possible, no unnecessary whitespaces. Every tool call from you must be wrapped within\na leading and following new line, aka \\n<tool-call>\\n.\n`,\n);\n",
+    "author": "system",
+    "timestamp": 1777938301630
+  },
+  {
+    "id": "d47a881d-608a-4a50-b205-a1e962f8f2a2",
+    "content": "import { filterConversationFor } from \"./coder/conversations.ts\";\nimport { Logger } from \"./coder/logger.ts\";\nimport {\n  GEMINI_3_1_FLASH_LITE_PREVIEW,\n  GEMINI_3_1_PRO_PREVIEW,\n} from \"./harness/models.ts\";\nimport { Session } from \"./harness/session.ts\";\n\nconst session = new Session(GEMINI_3_1_PRO_PREVIEW);\n\nconst decoder = new TextDecoder();\nfor await (const chunk of Deno.stdin.readable) {\n  const text = decoder.decode(chunk);\n\n  const responses = await session.prompt(text);\n  if (responses.length === 0) {\n    console.warn(\"model didn't answer :/\");\n    continue;\n  }\n\n  Logger.logConversation(filterConversationFor(\"model\", responses));\n}\n",
+    "author": "system",
+    "timestamp": 1777938301630
+  },
+  {
+    "id": "ebf5ae2c-559a-4896-a445-0197c657cba5",
+    "content": "import { Message } from \"../constants.ts\";\n\nexport function convertToStructuredMessage(\n  author: Message[\"author\"],\n  content: string,\n  timestamp = Date.now(),\n): Message {\n  const id = crypto.randomUUID();\n\n  return {\n    id,\n    content,\n    author,\n    timestamp,\n  };\n}\n\nexport function filterConversationFor(\n  author: Message[\"author\"],\n  conversation: Message[],\n): Message[] {\n  return conversation.filter((message) => message.author === author);\n}\n",
+    "author": "system",
+    "timestamp": 1777938301631
+  },
+  {
+    "id": "0c49e4e2-f74a-42bc-bcbb-9418305834e3",
+    "content": "import { DATE_TIME_FORMAT, Message } from \"../constants.ts\";\n\nexport class Logger {\n  private static prepareMessage(\n    message: Message,\n    annotate = false,\n  ): string {\n    const author = annotate ? `%c${message.author}%c` : message.author;\n\n    const formattedTimestamp = DATE_TIME_FORMAT.format(\n      new Date(message.timestamp),\n    );\n\n    const timestamp = annotate\n      ? `%c${formattedTimestamp}%c`\n      : formattedTimestamp;\n\n    return `[${author} wrote at ${timestamp}]:\\n${message.content}`;\n  }\n\n  static stringifyMessage(message: Message): string {\n    return Logger.prepareMessage(message);\n  }\n\n  static stringifyConversation(conversation: Message[]): string {\n    return conversation.map((message) => Logger.stringifyMessage(message)).join(\n      \"\\n\\n\",\n    );\n  }\n\n  static logMessage(message: Message): void {\n    const formatted = Logger.prepareMessage(message, true);\n\n    console.log(\n      formatted,\n      \"color: red\",\n      \"color: unset\",\n      \"color: blue\",\n      \"color: unset\",\n    );\n  }\n\n  static logConversation(conversation: Message[]): void {\n    for (const message of conversation) {\n      Logger.logMessage(message);\n    }\n  }\n}\n",
+    "author": "system",
+    "timestamp": 1777938301631
+  },
+  {
+    "id": "319a6ab6-9e97-4ee2-b7b2-d0b460e8e141",
+    "content": "import { DATE_TIME_FORMAT, Message, SYSTEM_PROMPT } from \"../constants.ts\";\nimport { ALL_TOOLS } from \"../harness/tools/all-tools.ts\";\nimport { Tool, TOOL_CALL_REGEX } from \"../harness/tools/tool.ts\";\n\n/** skims string for tool calls and returns instance of respective tools */\nexport function extractTools(\n  content: string,\n  availableTools = ALL_TOOLS,\n): Tool<any>[] {\n  const tools: Tool<any>[] = [];\n\n  const calls = [...content.matchAll(TOOL_CALL_REGEX)];\n\n  for (const [_, id, args] of calls) {\n    const tool = availableTools.find((tool) => tool.id === id);\n\n    if (!tool) {\n      console.warn(`tried to invoke unlisted tool ${id} with ${args}`);\n      continue;\n    }\n\n    tools.push(...tool.fromArgs(args));\n  }\n\n  return tools;\n}\n",
+    "author": "system",
+    "timestamp": 1777938301632
+  },
+  {
+    "id": "6cf89834-bd66-489e-9476-3fcd6d9afb4d",
+    "content": "import { generateText, LanguageModel } from \"ai\";\nimport { Message } from \"../constants.ts\";\nimport { convertToStructuredMessage } from \"../coder/conversations.ts\";\nimport { extractTools } from \"../coder/tools.ts\";\nimport { Logger } from \"../coder/logger.ts\";\n\n/** Prompts LLM with respect to conversation history and available tools */\nexport async function feed(\n  conversation: Message[],\n  model: LanguageModel,\n): Promise<Message[]> {\n  const prompt = Logger.stringifyConversation(conversation);\n\n  try {\n    const { text } = await generateText({\n      model,\n      prompt,\n    });\n\n    const responseConversation = [];\n    responseConversation.push(convertToStructuredMessage(\"model\", text));\n\n    const tools = extractTools(text);\n\n    for await (const tool of tools) {\n      const results = await tool.call();\n\n      responseConversation.push(...results);\n    }\n\n    if (responseConversation.length > 1) {\n      const followUp = await feed(\n        [...conversation, ...responseConversation],\n        model,\n      );\n\n      responseConversation.push(...followUp);\n    }\n\n    return responseConversation;\n  } catch (e) {\n    console.error(e);\n\n    return [];\n  }\n}\n",
+    "author": "system",
+    "timestamp": 1777938301632
+  },
+  {
+    "id": "f0a91e72-a084-4b88-879f-d42c871a6285",
+    "content": "import { createGoogleGenerativeAI } from \"@ai-sdk/google\";\n\nconst AI_STUDIO_API_KEY = Deno.env.get(\"AI_STUDIO_API_KEY\");\n\nconst google = createGoogleGenerativeAI({\n  apiKey: AI_STUDIO_API_KEY,\n});\n\nexport const GEMINI_3_FLASH_PREVIEW = google(\"gemini-3-flash-preview\");\n\nexport const GEMINI_3_1_FLASH_LITE_PREVIEW = google(\n  \"gemini-3.1-flash-lite-preview\",\n);\n\nexport const GEMINI_3_1_PRO_PREVIEW = google(\"gemini-3.1-pro-preview\");\n",
+    "author": "system",
+    "timestamp": 1777938301633
+  },
+  {
+    "id": "5214f2c7-7584-412e-99c7-b51a0b3d5b57",
+    "content": "import { LanguageModel } from \"ai\";\nimport { Message, SYSTEM_PROMPT } from \"../constants.ts\";\nimport { feed } from \"./feed.ts\";\nimport { convertToStructuredMessage } from \"../coder/conversations.ts\";\n\nexport class Session {\n  public readonly id: string;\n  private conversation: Message[] = [\n    SYSTEM_PROMPT,\n  ];\n  private model: LanguageModel;\n\n  constructor(\n    model: LanguageModel,\n  ) {\n    this.id = crypto.randomUUID();\n    this.model = model;\n\n    Deno.mkdirSync(\"./chats\", { recursive: true });\n    this.saveSync();\n  }\n\n  private saveSync(): void {\n    Deno.writeTextFileSync(\n      `./chats/${this.id}.json`,\n      JSON.stringify(this.conversation, null, 2),\n    );\n  }\n\n  private async save(): Promise<void> {\n    await Deno.writeTextFile(\n      `./chats/${this.id}.json`,\n      JSON.stringify(this.conversation, null, 2),\n    );\n  }\n\n  async prompt(content: string): Promise<Message[]> {\n    const message = convertToStructuredMessage(\"user\", content);\n    this.conversation.push(message);\n    await this.save();\n\n    const responses = await feed(this.conversation, this.model);\n    this.conversation.push(...responses);\n    await this.save();\n\n    return responses;\n  }\n}\n",
+    "author": "system",
+    "timestamp": 1777938301633
+  },
+  {
+    "id": "14079a52-7349-4453-95c3-beb1d4c9a979",
+    "content": "import { ListDir } from \"./list-dir.ts\";\nimport { ListTools } from \"./list-tools.ts\";\nimport { ReadFile } from \"./read-file.ts\";\nimport { Tool } from \"./tool.ts\";\nimport { WriteFile } from \"./write-file.ts\";\n\nexport const ALL_TOOLS: (typeof Tool<any>)[] = [\n  ListTools,\n  ReadFile,\n  ListDir,\n  WriteFile,\n];\n",
+    "author": "system",
+    "timestamp": 1777938301633
+  },
+  {
+    "id": "35585c73-24e3-4a55-a094-0621b436a73e",
+    "content": "import { convertToStructuredMessage } from \"../../coder/conversations.ts\";\nimport { Message } from \"../../constants.ts\";\nimport { Tool } from \"./tool.ts\";\n\nconst DESCRIPTION =\n  `The \"list-dir\" tool can be used to list the contents of a directory provided its path.\nBulk operations are possible, one can supply multiple directory paths to get the contents at once.\n\nTo invoke, respond in the form of {\"tool\":\"list-dir\",\"args\":string[]} where the string array are\nthe paths to requested directories. Absolute as well as relative directory paths are possible.`;\n\nexport class ListDir extends Tool<[string]> {\n  static override id = \"list-dir\";\n\n  static override description = DESCRIPTION;\n\n  static override matchesToolInvocation(content: string): boolean {\n    const regex =\n      /\\{\\s*\"?tool\"?\\s*:\\s*\"list-dir\"\\s*,\\s*\"?args\"?\\s*:\\s*\\[[^\\]]*\\]\\s*\\}/;\n\n    return regex.test(content);\n  }\n\n  static override fromArgs(args: string): ListDir[] {\n    const paths = JSON.parse(args) as string[];\n    return paths.map((path) => new ListDir(path));\n  }\n\n  constructor(private path: string) {\n    super(path);\n  }\n\n  override async call(): Promise<Message[]> {\n    try {\n      const entries: string[] = [];\n\n      for await (const dirEntry of Deno.readDir(this.path)) {\n        let suffix = \"\";\n        if (dirEntry.isDirectory) suffix = \"/\";\n        else if (dirEntry.isSymlink) suffix = \"@\";\n\n        entries.push(`${dirEntry.name}${suffix}`);\n      }\n\n      // Sort alphabetically for readability\n      entries.sort();\n\n      const content = entries.length > 0\n        ? entries.join(\"\\n\")\n        : \"(empty directory)\";\n\n      return [\n        convertToStructuredMessage(\n          \"system\",\n          `Contents of ${this.path}:\\n${content}`,\n        ),\n      ];\n    } catch (e) {\n      console.log(e);\n\n      const errorMessage = e instanceof Error ? e.message : String(e);\n      return [\n        convertToStructuredMessage(\n          \"system\",\n          `Error reading directory ${this.path}: ${errorMessage}`,\n        ),\n      ];\n    }\n  }\n}\n",
+    "author": "system",
+    "timestamp": 1777938301634
+  },
+  {
+    "id": "229cbe56-8414-4826-ad01-814d8532de25",
+    "content": "import { convertToStructuredMessage } from \"../../coder/conversations.ts\";\nimport { Message } from \"../../constants.ts\";\nimport { ALL_TOOLS } from \"./all-tools.ts\";\nimport { Tool } from \"./tool.ts\";\n\nconst DESCRIPTION =\n  `The \"list-tools\" tool can be used to list all tools available. It returns the description\nof all tools, explaining what they are used for, and what there syntax is.\n\nTo invoke, respond in the form of {tool:\"list-tools\",args:\"\"}. No arguments other then \"\" are possible.`;\n\nexport class ListTools extends Tool<[]> {\n  static override id = \"list-tools\";\n\n  static override description = DESCRIPTION;\n\n  static override matchesToolInvocation(content: string): boolean {\n    const regex =\n      /\\{\\s*\"?tool\"?\\s*:\\s*\"list-tools\"\\s*,\\s*\"?args\"?\\s*:\\s*\"\"\\s*\\}/;\n\n    return regex.test(content);\n  }\n\n  static override fromArgs(args: string): ListTools[] {\n    return [new ListTools()];\n  }\n\n  override async call(): Promise<Message[]> {\n    const content = ALL_TOOLS.map((tool, i) =>\n      `Tool ${tool.id} -- ${i + 1}/${ALL_TOOLS.length}\n  ${tool.description}`\n    ).join(\"\\n\");\n\n    return [convertToStructuredMessage(\"system\", content)];\n  }\n}\n",
+    "author": "system",
+    "timestamp": 1777938301634
+  },
+  {
+    "id": "3daf5bb1-43f2-4f54-9d81-001ba068ba39",
+    "content": "import { convertToStructuredMessage } from \"../../coder/conversations.ts\";\nimport { Message } from \"../../constants.ts\";\nimport { Tool } from \"./tool.ts\";\n\nconst DESCRIPTION =\n  `The \"read-file\" tool can be used to read the contents of any file provided its path.\nBulk operations are possible, one can supply multiple file paths to get the contents at once.\n\nTo invoke, respond in the form of {tool:\"read-file\",args:string[]} where the string array are\nthe paths to requested files. Absolute as well as relative file paths are possible.`;\n\nexport class ReadFile extends Tool<[string]> {\n  static override id = \"read-file\";\n\n  static override description = DESCRIPTION;\n\n  static override matchesToolInvocation(content: string): boolean {\n    const regex =\n      /\\{\\s*\"?tool\"?\\s*:\\s*\"read-file\"\\s*,\\s*\"?args\"?\\s*:\\s*\\[[^\\]]*\\]\\s*\\}/;\n\n    return regex.test(content);\n  }\n\n  static override fromArgs(args: string): ReadFile[] {\n    const paths = JSON.parse(args) as string[];\n    return paths.map((path) => new ReadFile(path));\n  }\n\n  constructor(private path: string) {\n    super(path);\n  }\n\n  override async call(): Promise<Message[]> {\n    const decoder = new TextDecoder();\n\n    try {\n      const file = await Deno.readFile(this.path);\n      const content = decoder.decode(file);\n\n      return [convertToStructuredMessage(\"system\", content)];\n    } catch (e) {\n      console.log(e);\n\n      const errorMessage = e instanceof Error ? e.message : String(e);\n      return [\n        convertToStructuredMessage(\n          \"system\",\n          `Error reading file ${this.path}: ${errorMessage}`,\n        ),\n      ];\n    }\n  }\n}\n",
+    "author": "system",
+    "timestamp": 1777938301635
+  },
+  {
+    "id": "1e12d2d9-4eeb-4522-8f36-eb9992ff3913",
+    "content": "import { Message } from \"../../constants.ts\";\n\nexport const TOOL_CALL_REGEX =\n  /\\{\\s*\"?tool\"?\\s*:\\s*\"([^\"]+)\"\\s*,\\s*\"?args\"?\\s*:\\s*(\"(?:\\\\.|[^\"\\\\])*\"|\\[[\\s\\S]*?\\]|\\{[\\s\\S]*?\\}|[^}\\s]+)\\s*\\}/g;\n\nexport abstract class Tool<Args extends unknown[]> {\n  static id: string;\n\n  static description: string;\n\n  static matchesToolInvocation(_content: string): boolean {\n    throw new Error(\"`matchesToolInvocation` not implemented\");\n  }\n\n  static fromArgs(_args: string): Tool<any>[] {\n    throw new Error(\"`fromArgs` not implemented\");\n  }\n\n  readonly args: Args;\n\n  constructor(...args: Args) {\n    this.args = args;\n  }\n\n  get meta(): { id: string; args: Args } {\n    const ctor = this.constructor as typeof Tool;\n\n    return {\n      id: ctor.id,\n      args: this.args,\n    };\n  }\n\n  async call(): Promise<Message[]> {\n    throw new Error(\"`call` is not implemented\");\n  }\n}\n",
+    "author": "system",
+    "timestamp": 1777938301635
+  },
+  {
+    "id": "b9be3de1-98b4-43f7-9f71-f997e5d2360a",
+    "content": "import { convertToStructuredMessage } from \"../../coder/conversations.ts\";\nimport { Message } from \"../../constants.ts\";\nimport { Tool } from \"./tool.ts\";\n\nconst DESCRIPTION =\n  `The \"write-file\" tool can be used to create new files or overwrite existing files with provided content.\nIt acts on one file at a time.\n\nTo invoke, respond in the form of {\"tool\":\"write-file\",\"args\":{\"path\":\"string\",\"content\":\"string\"}} where path is the target file path and content is the string content to write. Absolute as well as relative file paths are possible.`;\n\nexport class WriteFile extends Tool<[string, string]> {\n  static override id = \"write-file\";\n\n  static override description = DESCRIPTION;\n\n  static override matchesToolInvocation(content: string): boolean {\n    const regex =\n      /\\{\\s*\"?tool\"?\\s*:\\s*\"write-file\"\\s*,\\s*\"?args\"?\\s*:\\s*\\{[\\s\\S]*?\\}\\s*\\}/;\n\n    return regex.test(content);\n  }\n\n  static override fromArgs(args: string): WriteFile[] {\n    const parsed = JSON.parse(args) as { path: string; content: string };\n    return [new WriteFile(parsed.path, parsed.content)];\n  }\n\n  constructor(private path: string, private content: string) {\n    super(path, content);\n  }\n\n  override async call(): Promise<Message[]> {\n    try {\n      await Deno.writeTextFile(this.path, this.content);\n\n      return [\n        convertToStructuredMessage(\n          \"system\",\n          `Successfully wrote to ${this.path}`,\n        ),\n      ];\n    } catch (e) {\n      console.log(e);\n\n      const errorMessage = e instanceof Error ? e.message : String(e);\n      return [\n        convertToStructuredMessage(\n          \"system\",\n          `Error writing file ${this.path}: ${errorMessage}`,\n        ),\n      ];\n    }\n  }\n}\n",
+    "author": "system",
+    "timestamp": 1777938301635
+  },
+  {
+    "id": "80e73378-1169-4f37-9b3e-9651f09445f4",
+    "content": "Here is a list of all the files in the `src` folder along with a summary of their purpose:\n\n### Core / Root (`src/`)\n* **`constants.ts`**: Defines core types such as `Message` and `Author`, and stores shared constants like the timestamp formatter and the initial `SYSTEM_PROMPT` for the AI model.\n* **`index.ts`**: The main application entry point. It sets up a new conversation session, listens for user input from the terminal (`Deno.stdin`), passes it to the AI, and outputs the responses using the logger.\n\n### Utilities (`src/coder/`)\n* **`conversations.ts`**: Contains helper functions to create structured messages (adding unique IDs and timestamps) and to filter conversations by specific authors (like extracting only the model's messages).\n* **`logger.ts`**: A utility class that formats and prints conversation messages to the console with color-coded tags and timestamps. \n* **`tools.ts`**: Provides the `extractTools` function, which parses the AI's raw text responses to detect tool invocations and returns the corresponding executable tool instances.\n\n### AI Harness & Logic (`src/harness/`)\n* **`feed.ts`**: Contains the core AI loop. It prompts the language model with the conversation history, extracts any requested tool calls, executes them, and automatically feeds the tool results back into the model for follow-up responses.\n* **`models.ts`**: Initializes and exports the different Google Gemini AI models (via `@ai-sdk/google`) used by the system, configured with the `AI_STUDIO_API_KEY` environment variable.\n* **`session.ts`**: Defines the `Session` class, which manages the state of an ongoing chat. It handles keeping track of the conversation history, routing messages to the AI model, and persistently saving the chat logs to local JSON files in a `./chats` directory.\n\n### Tools (`src/harness/tools/`)\n* **`all-tools.ts`**: An aggregation file that exports an array of all available tools to make registering them straightforward.\n* **`tool.ts`**: Defines the abstract base `Tool` class. It enforces the structure that all tools must follow (like requiring a `description`, `id`, and a `call` method) and holds the regular expression used to parse tool calls from the model's output.\n* **`list-dir.ts`**: Implements the `list-dir` tool, allowing the AI to inspect directories and see their contents (files and folders).\n* **`list-tools.ts`**: Implements the `list-tools` tool, returning descriptions and instructions for all the tools the AI has access to.\n* **`read-file.ts`**: Implements the `read-file` tool, granting the AI the ability to read the text contents of files on the system.\n* **`write-file.ts`**: Implements the `write-file` tool, which lets the AI write text to new or existing files on the file system.",
+    "author": "model",
+    "timestamp": 1777938315821
+  }
+]
